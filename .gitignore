@@ -1,0 +1,8 @@
+# Pickle
+*.pickle
+
+# Credentials
+credentials.json
+
+# Virtual enviroment
+.venv
