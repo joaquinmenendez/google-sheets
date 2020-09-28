@@ -35,7 +35,17 @@ nos a dado permisos) debemos primero:
   para nuestra cuenta
 
 - Descargar las credenciales (opción Dektop). Esto descargar un archivo
-  llamado `credentials.json`. Guardarlo en el
+  llamado `credentials.json`. Guardar el arhivo en este directorio. Ejemplo:
+
+ ```bash
+ /google-sheets
+├── README.md
+├── credentials.json
+├── google_sheets.py
+├── quickstart.py
+├── requirements.txt
+└── token.pickle
+ ```
 
 - Ejecutar el script `quickstart.py`
 
@@ -76,6 +86,7 @@ df.loc[3] = [4,'w',48]  # Cambiamos campos (o agregamos nueva info)
 gs.exportDataToSheet(service,ID,RANGO,df)  # Exporta el df a una spreedsheat
 ```
 ```bash
+#Output
 Datos agregados
 ```
 
