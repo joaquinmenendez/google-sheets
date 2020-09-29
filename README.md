@@ -34,18 +34,23 @@ nos a dado permisos) debemos primero:
   [API de Google Sheets](https://developers.google.com/sheets/api/quickstart/python)
   para nuestra cuenta
 
-- Descargar las credenciales (opción Dektop). Esto descargar un archivo
-  llamado `credentials.json`. Guardar el arhivo en este directorio. Ejemplo:
+- Habilitar la
+  [API de Google Drive](https://developers.google.com/drive/api/v3/enable-drive-api)
+  si vamos a desear crear spreedsheets en una carpeta puntual.
 
- ```bash
- /google-sheets
+- Descargar las credenciales (opción Dektop). Esto descargar un archivo
+  llamado `credentials.json`. Guardar el arhivo en este directorio.
+  Ejemplo:
+
+```bash
+/google-sheets
 ├── README.md
 ├── credentials.json
 ├── google_sheets.py
 ├── quickstart.py
 ├── requirements.txt
 └── token.pickle
- ```
+```
 
 - Ejecutar el script `quickstart.py`
 
@@ -71,8 +76,9 @@ HOJA = 'Hoja 1'  # NOMBRE DE NUESTRA PRIMERA PESTAÑA
 RANGO = f'{HOJA}!A:C'  # DEFINE EL RANGO EN EL QUE ESTAMOS TRABAJANDO
 
 service = gs.initializeService()  # Crea el servicio
-df = gs.exportDataToSheet(service,ID, RANGO)  # Lee los datos y los guarda
+df = gs.getDatafromSheet(service,ID, RANGO)  # Lee los datos y los guarda
 ```
+
 ```bash
 # Output
   col1 col2  col3
@@ -81,16 +87,28 @@ df = gs.exportDataToSheet(service,ID, RANGO)  # Lee los datos y los guarda
 2    3    d    47
 3   99   zz  1991
 ```
+
 ```python
 df.loc[3] = [4,'w',48]  # Cambiamos campos (o agregamos nueva info)   
 gs.exportDataToSheet(service,ID,RANGO,df)  # Exporta el df a una spreedsheat
 ```
+
 ```bash
 #Output
 Datos agregados
 ```
-
-Puede encontrar un tutorial mas detallado
-[aquí](https://medium.com/analytics-vidhya/how-to-read-and-write-data-to-google-spreadsheet-using-python-ebf54d51a72c)
-
-
+Si el usario desea crear un archivo nuevo puede hacerlo utilizando la función  
+`createSpreadsheet`. El usuario puede elegir una carpeta específica pasando  
+un diccionario al paramero `folder`. Recordar que para esto es importante tener  
+ las autorizaciones pertinentes al momento de crear las credenciales.  
+Ejemplo:
+```python
+folder = {'token':'token.pickle',
+          'id':'1t0mosrpo-sTd1nTdVAOZe3LGp0M_Eft9'
+}
+gf.createSpreadsheet(service,'Nombre nuevo archivo', folder=folder)
+```
+```bash
+# Output
+{'spreadsheetId': '1RFg0oEJTPEshxAzg1dbgYVnRgtGkxS-iGKnRPxH2PYA'}
+```
