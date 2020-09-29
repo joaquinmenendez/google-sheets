@@ -75,6 +75,18 @@ def exportDataToSheet(service,id,rango,df):
 
 
 def createSpreadsheet(service, title, folder=None, developerMetadata = None):
+    '''
+    Crea un archivo de tipo Google spreadsheet. El usuario puede optar por mover el archivo (por defecto creado en el root de su Drive)
+    a una carpeta específica en su Drive u otro Drive, en caso de querer hacer lo segundo debera tener otro par de crendenciales correspondiente
+    a la cuenta de Drive en la cual se desea crear el archivo.
+    :param service:  (googleapiclient.discovery.Resource) Spreadsheet Service object
+    :param title: (str) Título del archivo
+    :param folder: (dict) {'token': path al token con las credenciales del Drive en el cual se va a operar,
+                           'id' : el id de la carpeta a la cual se va a mover el archivo}
+    :param developerMetadata: (ídict) En caso de que se quieran agregar valores a la metada.
+                              Consultar https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.developerMetadata#developermetadatalocation
+    :return: None
+    '''
     spreadsheet = {
         'properties': {
             'title': title
