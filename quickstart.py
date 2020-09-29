@@ -1,13 +1,12 @@
 #from __future__ import print_function
 import pickle
 import os.path
-#import pandas as pd
-#from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
 # If modifying these scopes, delete the file token.pickle.
-SCOPES = ['https://www.googleapis.com/auth/spreadsheets'] # Read and write permission
+SCOPES = ['https://www.googleapis.com/auth/drive'] # Read and write permission
+# Check available scopes at https://developers.google.com/identity/protocols/oauth2/scopes#sheets
 
 def main():
     """Shows basic usage of the Sheets API.
