@@ -97,18 +97,22 @@ gs.exportDataToSheet(service,ID,RANGO,df)  # Exporta el df a una spreedsheat
 #Output
 Datos agregados
 ```
-Si el usario desea crear un archivo nuevo puede hacerlo utilizando la función  
-`createSpreadsheet`. El usuario puede elegir una carpeta específica pasando  
-un diccionario al paramero `folder`. Recordar que para esto es importante tener  
- las autorizaciones pertinentes al momento de crear las credenciales.  
+
+Si el usario desea crear un archivo nuevo puede hacerlo utilizando la
+función `createSpreadsheet`. El usuario puede elegir una carpeta específica
+pasando un diccionario al paramero `folder`. Recordar que para esto es
+importante tener las autorizaciones pertinentes al momento de crear las credenciales.  
 Ejemplo:
+
 ```python
 folder = {'token':'token.pickle',
           'id':'1t0mosrpo-sTd1nTdVAOZe3LGp0M_Eft9'
 }
 gf.createSpreadsheet(service,'Nombre nuevo archivo', folder=folder)
 ```
+
 ```bash
 # Output
 {'spreadsheetId': '1RFg0oEJTPEshxAzg1dbgYVnRgtGkxS-iGKnRPxH2PYA'}
 ```
+
